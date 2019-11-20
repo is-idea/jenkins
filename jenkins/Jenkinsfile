@@ -6,13 +6,7 @@ pipeline {
             maven 'maven'
             jdk 'java-1.8-openjdk'
         }
-       steps {
-            script{
-              def dockerPath = tool 'docker' //全局配置里的docker
-              env.PATH = "${dockerPath}/bin:${env.PATH}" //添加了系统环境变量上
-            }
-           }
-        }
+
         stages {
             stage('build') {
                 steps {
@@ -21,9 +15,9 @@ pipeline {
                     sh 'pwd'
                     sh 'mvn --version'
                     sh 'java -version'
-                    sh 'sudo docker ps'
-                    sh 'sudo docker ps -a'
-                    sh 'sudo docker images'
+                    sh '-u root docker ps'
+                    sh '-u root docker ps -a'
+                    sh '-u root docker images'
                     sh 'mvn -B -DskipTests clean package docker:build'
  
                 }
