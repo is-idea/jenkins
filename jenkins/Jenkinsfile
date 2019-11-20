@@ -24,7 +24,7 @@ pipeline {
                     sh 'pwd'
                     sh 'mvn --version'
                     sh 'java -version'
-                    -u root sh 'docker ps'
+                    sh 'su root && docker ps'
                     sh 'docker ps -a'
                     sh 'docker images'
                     sh 'mvn -B -DskipTests clean package docker:build'
