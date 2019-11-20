@@ -15,9 +15,10 @@ pipeline {
                     sh 'pwd'
                     sh 'mvn --version'
                     sh 'java -version'
-                    sh '-u root docker ps'
-                    sh '-u root docker ps -a'
-                    sh '-u root docker images'
+                    sh 'sudo gpasswd -a $USER docker'
+                    sh 'docker ps'
+                    sh 'docker ps -a'
+                    sh 'docker images'
                     sh 'mvn -B -DskipTests clean package docker:build'
  
                 }
