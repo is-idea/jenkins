@@ -18,7 +18,7 @@ pipeline {
  
                 }
             }
-            stage('build') {
+            stage('build222') {
                 steps {
                     echo 'Building..'
                     // 输出路径
